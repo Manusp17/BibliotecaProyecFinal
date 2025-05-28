@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26-may-2025 2:25:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Ejemplar" table="ejemplar" catalog="bibliotecadonbosco" optimistic-lock="version">
+        <id name="idEjemplar" type="java.lang.Integer">
+            <column name="ID_Ejemplar" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="material" class="Modelo.Material" fetch="select">
+            <column name="ID_Material" />
+        </many-to-one>
+        <property name="codigoBarra" type="string">
+            <column name="Codigo_Barra" length="50" unique="true" />
+        </property>
+        <property name="estado" type="string">
+            <column name="Estado" length="10" />
+        </property>
+        <property name="ubicacionFisica" type="string">
+            <column name="Ubicacion_Fisica" length="100" />
+        </property>
+        <set name="prestamos" table="prestamo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_Ejemplar" />
+            </key>
+            <one-to-many class="Modelo.Prestamo" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26-may-2025 2:25:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Prestamo" table="prestamo" catalog="bibliotecadonbosco" optimistic-lock="version">
+        <id name="idPrestamo" type="java.lang.Integer">
+            <column name="ID_Prestamo" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="ejemplar" class="Modelo.Ejemplar" fetch="select">
+            <column name="ID_Ejemplar" />
+        </many-to-one>
+        <many-to-one name="usuario" class="Modelo.Usuario" fetch="select">
+            <column name="ID_Usuario" />
+        </many-to-one>
+        <property name="fechaPrestamo" type="date">
+            <column name="Fecha_Prestamo" length="10" />
+        </property>
+        <property name="fechaDevolucionProgramada" type="date">
+            <column name="Fecha_Devolucion_Programada" length="10" />
+        </property>
+        <property name="devuelto" type="string">
+            <column name="Devuelto" length="2" />
+        </property>
+        <set name="moras" table="mora" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_Prestamo" />
+            </key>
+            <one-to-many class="Modelo.Mora" />
+        </set>
+    </class>
+</hibernate-mapping>

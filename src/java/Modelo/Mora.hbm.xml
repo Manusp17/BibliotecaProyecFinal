@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26-may-2025 2:25:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Modelo.Mora" table="mora" catalog="bibliotecadonbosco" optimistic-lock="version">
+        <id name="idMora" type="java.lang.Integer">
+            <column name="ID_Mora" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="prestamo" class="Modelo.Prestamo" fetch="select">
+            <column name="ID_Prestamo" />
+        </many-to-one>
+        <property name="monto" type="big_decimal">
+            <column name="Monto" precision="6" />
+        </property>
+        <property name="diasAtraso" type="java.lang.Integer">
+            <column name="Dias_Atraso" />
+        </property>
+    </class>
+</hibernate-mapping>
