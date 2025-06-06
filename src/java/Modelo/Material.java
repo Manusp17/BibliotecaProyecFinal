@@ -39,10 +39,6 @@ public  abstract class Material  implements java.io.Serializable {
      private TipoMaterial tipoMaterial;
      private String ubicacionFisica;
      private Integer cantidadEjemplares;
-     private CD cd;
-     private Tesis tesis;
-     private Libro libro;
-     private Revista revista;
      private Set<Ejemplar> ejemplars = new HashSet<Ejemplar>(0);
 
      public enum TipoMaterial {
@@ -57,7 +53,7 @@ public  abstract class Material  implements java.io.Serializable {
         this.titulo = titulo;
         this.tipoMaterial = tipoMaterial;
     }
-    public Material(String titulo, String autor, String editorial, Date anio, TipoMaterial tipoMaterial, String ubicacionFisica, Integer cantidadEjemplares, CD cd, Tesis tesis, Libro libro, Revista revista, Set<Ejemplar> ejemplars) {
+    public Material(String titulo, String autor, String editorial, Date anio, TipoMaterial tipoMaterial, String ubicacionFisica, Integer cantidadEjemplares, Set<Ejemplar> ejemplars) {
        this.titulo = titulo;
        this.autor = autor;
        this.editorial = editorial;
@@ -65,10 +61,6 @@ public  abstract class Material  implements java.io.Serializable {
        this.tipoMaterial = tipoMaterial;
        this.ubicacionFisica = ubicacionFisica;
        this.cantidadEjemplares = cantidadEjemplares;
-       this.cd = cd;
-       this.tesis = tesis;
-       this.libro = libro;
-       this.revista = revista;
        this.ejemplars = ejemplars;
     }
    
@@ -128,34 +120,7 @@ public  abstract class Material  implements java.io.Serializable {
     public void setCantidadEjemplares(Integer cantidadEjemplares) {
         this.cantidadEjemplares = cantidadEjemplares;
     }
-    public CD getCd() {
-        return this.cd;
-    }
-    
-    public void setCd(CD cd) {
-        this.cd = cd;
-    }
-    public Tesis getTesis() {
-        return this.tesis;
-    }
-    
-    public void setTesis(Tesis tesis) {
-        this.tesis = tesis;
-    }
-    public Libro getLibro() {
-        return this.libro;
-    }
-    
-    public void setLibro(Libro libro) {
-        this.libro = libro;
-    }
-    public Revista getRevista() {
-        return this.revista;
-    }
-    
-    public void setRevista(Revista revista) {
-        this.revista = revista;
-    }
+
     public Set<Ejemplar> getEjemplars() {
         return this.ejemplars;
     }
