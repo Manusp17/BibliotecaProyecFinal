@@ -10,6 +10,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -27,6 +28,7 @@ public class Usuario  implements java.io.Serializable {
         Activo, Suspendido
     }
     
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Usuario")
      private Integer idUsuario;
