@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 26-may-2025 2:25:29 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+  <class catalog="bibliotecadonbosco" name="Modelo.CD" optimistic-lock="version" table="cd">
+    <id name="idMaterial" type="int">
+      <column name="ID_Material"/>
+      <generator class="foreign">
+        <param name="property">material</param>
+      </generator>
+    </id>
+    <one-to-one class="Modelo.Material" constrained="true" name="material"/>
+    <property name="genero" type="string">
+      <column length="50" name="Genero"/>
+    </property>
+    <property name="duracion" type="time">
+      <column length="8" name="Duracion"/>
+    </property>
+    <property name="numeroCanciones" type="java.lang.Integer">
+      <column name="Numero_Canciones"/>
+    </property>
+  </class>
+</hibernate-mapping>

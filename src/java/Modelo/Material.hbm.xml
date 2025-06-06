@@ -1,43 +1,42 @@
-<?xml version="1.0"?>
-<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <!-- Generated 26-may-2025 2:25:29 by Hibernate Tools 4.3.1 -->
 <hibernate-mapping>
-    <class name="Modelo.Material" table="material" catalog="bibliotecadonbosco" optimistic-lock="version">
-        <id name="idMaterial" type="java.lang.Integer">
-            <column name="ID_Material" />
-            <generator class="identity" />
-        </id>
-        <property name="titulo" type="string">
-            <column name="Titulo" length="150" not-null="true" />
-        </property>
-        <property name="autor" type="string">
-            <column name="Autor" length="100" />
-        </property>
-        <property name="editorial" type="string">
-            <column name="Editorial" length="100" />
-        </property>
-        <property name="anio" type="date">
-            <column name="Anio" length="4" />
-        </property>
-        <property name="tipoMaterial" type="string">
-            <column name="Tipo_Material" length="7" not-null="true" />
-        </property>
-        <property name="ubicacionFisica" type="string">
-            <column name="Ubicacion_Fisica" length="100" />
-        </property>
-        <property name="cantidadEjemplares" type="java.lang.Integer">
-            <column name="Cantidad_Ejemplares" />
-        </property>
-        <one-to-one name="cd" class="Modelo.Cd"></one-to-one>
-        <one-to-one name="tesis" class="Modelo.Tesis"></one-to-one>
-        <one-to-one name="libro" class="Modelo.Libro"></one-to-one>
-        <one-to-one name="revista" class="Modelo.Revista"></one-to-one>
-        <set name="ejemplars" table="ejemplar" inverse="true" lazy="true" fetch="select">
-            <key>
-                <column name="ID_Material" />
-            </key>
-            <one-to-many class="Modelo.Ejemplar" />
-        </set>
-    </class>
+  <class catalog="bibliotecadonbosco" name="Modelo.Material" optimistic-lock="version" table="material">
+    <id name="idMaterial" type="java.lang.Integer">
+      <column name="ID_Material"/>
+      <generator class="identity"/>
+    </id>
+    <property name="titulo" type="string">
+      <column length="150" name="Titulo" not-null="true"/>
+    </property>
+    <property name="autor" type="string">
+      <column length="100" name="Autor"/>
+    </property>
+    <property name="editorial" type="string">
+      <column length="100" name="Editorial"/>
+    </property>
+    <property name="anio" type="date">
+      <column length="4" name="Anio"/>
+    </property>
+    <property name="tipoMaterial" type="string">
+      <column length="7" name="Tipo_Material" not-null="true"/>
+    </property>
+    <property name="ubicacionFisica" type="string">
+      <column length="100" name="Ubicacion_Fisica"/>
+    </property>
+    <property name="cantidadEjemplares" type="java.lang.Integer">
+      <column name="Cantidad_Ejemplares"/>
+    </property>
+    <one-to-one class="Modelo.CD" name="cd"/>
+    <one-to-one class="Modelo.Tesis" name="tesis"/>
+    <one-to-one class="Modelo.Libro" name="libro"/>
+    <one-to-one class="Modelo.Revista" name="revista"/>
+    <set fetch="select" inverse="true" lazy="true" name="ejemplars" table="ejemplar">
+      <key>
+        <column name="ID_Material"/>
+      </key>
+      <one-to-many class="Modelo.Ejemplar"/>
+    </set>
+  </class>
 </hibernate-mapping>

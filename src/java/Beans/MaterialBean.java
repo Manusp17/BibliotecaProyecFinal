@@ -2,7 +2,12 @@
 package Beans;
 
 import DAO.MaterialDAO;
+import Modelo.CD;
+import Modelo.Libro;
 import Modelo.Material;
+
+import Modelo.Revista;
+import Modelo.Tesis;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
@@ -24,20 +29,39 @@ public class MaterialBean {
     public void init() {
     materialDAO = new MaterialDAO();
     listaMaterial = materialDAO.buscarTodo();
-    material = new Material();
+    material = new Material() {};
     material.setIdMaterial(0);
     accion = "Registrar";
     
     }
     
+    public void prepararNuevoMaterial(String tipo) {
+    switch (tipo) {
+        case "Libro":
+            material = new Libro();
+            break;
+        case "CD":
+            material = new CD();
+            break;
+        case "Revista":
+            material = new Revista();
+            break;
+        case "Tesis":
+            material = new Tesis();
+            break;
+    }
+    material.setIdMaterial(0);
+    accion = "Registrar";
+    }
+    
     public void limpiarFormulario() {
-        this.material = new Material();
+        this.material = new Material() {};
         this.material.setIdMaterial(0);
         accion = "Registrar";
     }
 
     public void acctionFormulario() {
-        if (accion == "Registrar") {
+        if ("Registrar".equals(accion)) {
             insertar();
         } else {
             actualizar();
